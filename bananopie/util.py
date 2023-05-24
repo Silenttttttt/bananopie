@@ -2,7 +2,7 @@ import os, math, random
 from hashlib import blake2b
 import ed25519_blake2b
 from decimal import Decimal, getcontext
-import nanopy
+from nanopy import work_generate, work_validate
 
 
 
@@ -161,7 +161,7 @@ def gen_work_deterministic(hash: str, threshold: str) -> str:
     nonce += 1
 
 def gen_work(hash: str) -> str:
-    return nanopy.work_generate(hash)
+    return work_generate(hash)
 
 def verify_work(hash: str, work: str) -> bool:
-    return nanopy.work_validate(hash, work)
+    return work_validate(hash, work)
