@@ -2,6 +2,9 @@ import os, math, random
 from hashlib import blake2b
 import ed25519_blake2b
 from decimal import Decimal, getcontext
+import nanopy
+
+
 
 BANANO_DECIMALS = 29
 #banano supply is 1.000.000.000+, so add 10 decimals
@@ -57,7 +60,7 @@ def decode_base32(base32: str) -> bytes:
     output[index] = (value << (bits + offset - 8)) & 255
     index += 1
   if leftover != 0:
-    output = output[1::]
+        output = output[1::]
   return bytes(output)
 
 def bytes_to_hex(bytes: bytes) -> str:
@@ -158,13 +161,7 @@ def gen_work_deterministic(hash: str, threshold: str) -> str:
     nonce += 1
 
 def gen_work(hash: str) -> str:
-  return gen_work_deterministic(hash, BANANO_WORK)
+    return nanopy.work_generate(hash)
 
 def verify_work(hash: str, work: str) -> bool:
-  blake_obj = blake2b(digest_size=8)
-  blake_obj.update(bytearray.fromhex(work)[::-1])
-  blake_obj.update(hex_to_bytes(hash))
-  if int.from_bytes(blake_obj.digest(), byteorder='little') >= int.from_bytes(hex_to_bytes(BANANO_WORK), byteorder='big'):
-    return True
-  else:
-    return False
+    return nanopy.work_validate(hash, work)
