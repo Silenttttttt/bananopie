@@ -6,7 +6,7 @@ setup(
     author="John Doe",
     author_email="prussia@prussia.dev",
     packages=["bananopie"],
-    install_requires=["requests", "ed25519_blake2b"],
+    install_requires=["requests", "ed25519_blake2b", "nanopy"],
     version="0.1.0",
     license="MIT",
     description="A python library to simplify sending and receiving Banano. Also a RPC wrapper.",
