@@ -1,5 +1,7 @@
 # Bananopie
 
+This fork replaced the default work generation with nanopy's C work generation, it's unknown if this is reliable or good.
+
 Bananopie is a python library for the Banano cryptocurrency. It aims to be the python equivalent of Banano.js, and not just a RPC wrapper (Sending, receiving, changing rep functions are very high level).
 
 ## Installation
